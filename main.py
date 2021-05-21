@@ -24,13 +24,13 @@ async def listar_studiantes(auth: str = Header(None)):
 		return JSONResponse(status_code=200, content={'results': results, "message": None})
 	return JSONResponse(status_code=401, content={"message": "No Autorizado"})
 
-@app.patch("/api/v1/students/{student_id}")
-async def agregar_nota(student_id: str, nota: int, auth: str = Header(None)):
+@app.patch("/api/v1/students/nota/{document}")
+async def agregar_nota(document: str, nota: int, auth: str = Header(None)):
 	if auth == 'admin':
 		if nota >= 0 and nota <= 5 and isinstance(nota, int):
 			students = read_all()['students']
 			for student in students:
-				if student['document']==student_id:
+				if student['document']==document:
 					student['note']=nota
 					results = update_one(students, student)
 					return JSONResponse(status_code=200, content={'results': results, "message": None})
@@ -57,16 +57,23 @@ async def promedios(auth: str = Header(None)):
 	return JSONResponse(status_code=401, content={"message": "No Autorizado"})
 
 #Metodos de students
-@app.get("/api/v1/students/{student_id}")
-async def leer_por_id(auth: str = Header(None)):
+@app.get("/api/v1/students/one")
+async def leer_por_id(document: str, auth: str = Header(None)):
 	if auth == 'student':
 		results = read_all()['students']
 		return JSONResponse(status_code=200, content=results['students'])
 	return JSONResponse(status_code=401, content={"message": "No Autorizado"})
 
-@app.patch("/api/v1/students/")
-async def set_autoevaluacion(auth: str = Header(None)):
+@app.patch("/api/v1/students/auto/{document}")
+async def set_autoevaluacion(document: str, autoevaluation: int, auth: str = Header(None)):
 	if auth == 'student':
-		results = read_all()['students']
-		return JSONResponse(status_code=200, content=results['students'])
+		if autoevaluation >= 0 and autoevaluation <= 5 and isinstance(autoevaluation, int):
+			students = read_all()['students']
+			for student in students:
+				if student['document']==document:
+					student['autoevaluation']=autoevaluation
+					results = update_one(students, student)
+					return JSONResponse(status_code=200, content={'results': results, "message": None})
+			return JSONResponse(status_code=404, content={"message": "No se encontro el documento"})
+		return JSONResponse(status_code=409, content={"message": "La autoevaluacion debe estar entre 0 y 5 y ser entero"})
 	return JSONResponse(status_code=401, content={"message": "No Autorizado"})

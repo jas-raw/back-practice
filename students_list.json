@@ -19,15 +19,6 @@
             "autoevaluation": 0
         },
         {
-            "id": "dc2ff3b3-be00-4eb6-9332-152f6b2e2f68",
-            "complete_name": "Miranda Calles",
-            "document": "100138",
-            "age": 27,
-            "gender": "Female",
-            "note": 3,
-            "autoevaluation": 0
-        },
-        {
             "id": "dc2ff3b3-be00-4eb6-9332-152f6b2e2f66",
             "complete_name": "Marco Antonio Solis",
             "document": "100136",
@@ -53,6 +44,15 @@
             "gender": "male",
             "note": 0,
             "autoevaluacion": 0
+        },
+        {
+            "id": "dc2ff3b3-be00-4eb6-9332-152f6b2e2f68",
+            "complete_name": "Miranda Calles",
+            "document": "100138",
+            "age": 27,
+            "gender": "Female",
+            "note": 3,
+            "autoevaluation": 4
         }
     ]
 }
