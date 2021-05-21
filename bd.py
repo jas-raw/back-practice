@@ -1,6 +1,16 @@
 import json
 
+'''Inicializacion'''
+
 data_base = 'students_list.json'
+
+def guardar(js: dict):
+    with open('{}'.format(data_base), 'w', newline='\n') as file:
+        json.dump(js, file, indent=4, ensure_ascii=False)
+    return 1
+
+
+'''Metodos de la base de datos'''
 
 def read_all():
     db = open(data_base)
@@ -12,9 +22,7 @@ def write_one(data: list, student: dict):
     js = {
         "students": data
     }
-    with open('{}'.format(data_base), 'w', newline='\n') as file:
-        json.dump(js, file, indent=4, ensure_ascii=False)
-    return 1
+    return guardar(js)
 
 def update_one(students: list, student_in: dict):
     for i in range(len(students)):
@@ -24,6 +32,4 @@ def update_one(students: list, student_in: dict):
             js = {
                 "students": students
             }
-            with open('{}'.format(data_base), 'w', newline='\n') as file:
-                json.dump(js, file, indent=4, ensure_ascii=False)
-            return 1
+            return guardar(js)

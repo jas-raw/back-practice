@@ -18,7 +18,7 @@ async def create_student(student_in: Student, auth: str = Header(None)):
 	return JSONResponse(status_code=401, content={"message": "No Autorizado"})
 
 @app.get("/api/v1/students")
-async def listar_usuarios(auth: str = Header(None)):
+async def listar_studiantes(auth: str = Header(None)):
 	if auth == 'admin':
 		results = read_all()['students']
 		return JSONResponse(status_code=200, content={'results': results, "message": None})
@@ -36,6 +36,24 @@ async def agregar_nota(student_id: str, nota: int, auth: str = Header(None)):
 					return JSONResponse(status_code=200, content={'results': results, "message": None})
 			return JSONResponse(status_code=404, content={"message": "No se encontro el documento"})
 		return JSONResponse(status_code=409, content={"message": "La nota debe estar entre 0 y 5 y ser entero"})
+	return JSONResponse(status_code=401, content={"message": "No Autorizado"})
+
+@app.get("/api/v1/students/promedio")
+async def promedios(auth: str = Header(None)):
+	if auth == 'admin':
+		students = read_all()['students']
+		suma=sum([student['note'] for student in students])
+		cont = len(students)
+		res = str(suma/cont).split('.')
+		if len(res) == 1:
+			results = float(res[0])
+		else:
+			apr=0
+			if len(res[1]) >= 3:
+				if int(res[1][2]) >= 5:
+					apr = 0.01
+			results = float(res[0]+'.'+res[1][0:2])+apr
+		return JSONResponse(status_code=200, content={'results': results, "message": None})
 	return JSONResponse(status_code=401, content={"message": "No Autorizado"})
 
 #Metodos de students
