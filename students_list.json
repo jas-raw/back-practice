@@ -10,24 +10,6 @@
             "autoevaluation": 0
         },
         {
-            "id": "dc2ff3b3-be00-4eb6-9332-152f6b2e2f65",
-            "complete_name": "Daniela Perez",
-            "document": "100135",
-            "age": 23,
-            "gender": "Female",
-            "note": 5,
-            "autoevaluation": 0
-        },
-        {
-            "id": "dc2ff3b3-be00-4eb6-9332-152f6b2e2f66",
-            "complete_name": "Marco Antonio Solis",
-            "document": "100136",
-            "age": 28,
-            "gender": "Male",
-            "note": 5,
-            "autoevaluation": 0
-        },
-        {
             "id": "dc2ff3b3-be00-4eb6-9332-152f6b2e2f67",
             "complete_name": "Zacarias Piedras Del Rio",
             "document": "100137",
@@ -37,13 +19,13 @@
             "autoevaluation": 0
         },
         {
-            "id": "string",
-            "complete_name": "string",
-            "document": "string",
-            "age": 0,
-            "gender": "male",
-            "note": 0,
-            "autoevaluacion": 0
+            "id": "dc2ff3b3-be00-4eb6-9332-152f6b2e2f65",
+            "complete_name": "Daniela Perez",
+            "document": "100135",
+            "age": 23,
+            "gender": "Female",
+            "note": 5,
+            "autoevaluation": 0
         },
         {
             "id": "dc2ff3b3-be00-4eb6-9332-152f6b2e2f68",
@@ -51,7 +33,16 @@
             "document": "100138",
             "age": 27,
             "gender": "Female",
-            "note": 3,
+            "note": 4,
+            "autoevaluation": 4
+        },
+        {
+            "id": "dc2ff3b3-be00-4eb6-9332-152f6b2e2f66",
+            "complete_name": "Marco Antonio Solis",
+            "document": "100136",
+            "age": 28,
+            "gender": "Male",
+            "note": 4,
             "autoevaluation": 4
         }
     ]

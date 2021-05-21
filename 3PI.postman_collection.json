@@ -1,0 +1,205 @@
+{
+	"info": {
+		"_postman_id": "7dcb7e55-6b9e-4bf1-b2c5-da7f5dd04079",
+		"name": "3PI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Listar Estudiantes",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "auth",
+						"value": "admin",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/students",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"students"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Promedio",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "auth",
+						"value": "admin",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/students/promedio",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"students",
+						"promedio"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Estudiante por documento",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "auth",
+						"value": "student",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/students/one?document=100138",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"students",
+						"one"
+					],
+					"query": [
+						{
+							"key": "document",
+							"value": "100138"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Estudiante",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "auth",
+						"value": "admin",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"string\",\r\n  \"complete_name\": \"string\",\r\n  \"document\": \"string\",\r\n  \"age\": 0,\r\n  \"gender\": \"male\",\r\n  \"note\": 0,\r\n  \"autoevaluacion\": 0\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/students",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"students"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar Nota",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "auth",
+						"value": "admin",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/v1/students/nota/100135?nota=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"students",
+						"nota",
+						"100135"
+					],
+					"query": [
+						{
+							"key": "nota",
+							"value": "5",
+							"description": "int"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar Autoevaluacion",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "auth",
+						"value": "student",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/v1/students/auto/100138?autoevaluation=4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"students",
+						"auto",
+						"100138"
+					],
+					"query": [
+						{
+							"key": "autoevaluation",
+							"value": "4",
+							"description": "int"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
