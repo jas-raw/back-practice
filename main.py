@@ -60,8 +60,11 @@ async def promedios(auth: str = Header(None)):
 @app.get("/api/v1/students/one")
 async def leer_por_id(document: str, auth: str = Header(None)):
 	if auth == 'student':
-		results = read_all()['students']
-		return JSONResponse(status_code=200, content=results['students'])
+		students = read_all()['students']
+		for student in students:
+			if student['document']==document:
+				return JSONResponse(status_code=200, content={'results': student, "message": None})
+		return JSONResponse(status_code=404, content={"message": "No se encontro el documento"})
 	return JSONResponse(status_code=401, content={"message": "No Autorizado"})
 
 @app.patch("/api/v1/students/auto/{document}")
